@@ -1,0 +1,13 @@
+.wrapper {
+  background: #ECEFF1;
+  height: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-content: flex-start;
+  overflow: auto;
+  /* background-image: url(../../img/grey_wash_wall_@2X.png);
+  background-position: 0% 25%; */
+  /* background-size:  cover; */
+
+}
