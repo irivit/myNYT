@@ -1,0 +1,13 @@
+
+.jumbotron {
+    margin-top:15px;
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: lightgray;
+    color: #003152;
+    border:solid 3px #fff;
+};
+
+.jumbotron > h3 {
+    color:white!important;
+}

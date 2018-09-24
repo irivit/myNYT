@@ -3,6 +3,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3001;
 const app = express();
+const mongoose = require("mongoose");
 
 // Define middleware here
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -13,7 +14,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 //  API routes
-const routes = require("./routes")
+const routes = require("./client/src/routes/")
 app.use(routes);
 
 //Determine if using local DB or heroku mLabs db
