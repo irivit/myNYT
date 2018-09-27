@@ -23,14 +23,13 @@ export default {
         return (axios.post("/api/article", articleData));
     },
 
-    //Called from Home.js when user click save artice
+  
     getSavedArticles: () => {
-        console.log("Inside API.getSavedArticles");
+        console.log("adentro API.getSavedArticles");
         return (axios.get("/api/articles"));
 
     },
-    
-    //Called from Home.js when user click delete article
+ 
     deleteArticle: (data) => {
         console.log(data);
         return (axios.delete(`api/article/${data._id}`));

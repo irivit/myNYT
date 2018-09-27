@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {BrowserRouter} from "react-router-dom" 
 import Wrapper from "./components/Wrapper";
 import Nav from "./components/Nav/Nav";
 import Jumbotron from "./components/Jumbotron/Jumbotron";
@@ -10,6 +11,7 @@ import ListContainer from "./components/ListContainer";
 import Buttons from "./components/Buttons";
 import API from "./Utils/API";
 import Messages from "./components/Messages";
+import Body from "./components/Body";
 import "./App.css";
 
 
@@ -101,27 +103,28 @@ class App extends Component {
         /> */}
         <Jumbotron>
           <h1 className="jumbotron-header">New York Times Article Scrubber</h1>
-          <h3>Search for NYT articles using a keyword and save any article to review later</h3>
+          <h3>Search for NYT articles of your preference</h3>
         </Jumbotron>
-        <Panel heading="Search">
-          < Search
-            handleInputChange={this.handleInputChange}
-            handleFormSubmit={this.handleFormSubmit}
-          />
-        </Panel>
-        <Panel heading="Results">
-          <div style={{ float: "left", clear: "both" }}
-            ref={(el) => { this.resultsTop = el; }}>
-          </div>
-          {this.state.results.length ? (
-            <List>
-              {this.state.results.map(result => ( //For each article in the result array, create a list item with a div w/ article info, and a save button with article ID
-                <Items key={result._id}>
-                  <ListContainer
-                    headline={result.headline.main}
-                    pub_date={result.pub_date}
-                    url={result.web_url} />
-              
+        <Body>
+          <Panel heading="Search">
+            < Search
+              handleInputChange={this.handleInputChange}
+              handleFormSubmit={this.handleFormSubmit}
+            />
+          </Panel>
+          <Panel heading="Results">
+            <div style={{ float: "left", clear: "both" }}
+              ref={(el) => { this.resultsTop = el; }}>
+            </div>
+            {this.state.results.length ? (
+              <List>
+                {this.state.results.map(result => ( //For each article in the result array, create a list item with a div w/ article info, and a save button with article ID
+                  <Items key={result._id}>
+                    <ListContainer
+                      headline={result.headline.main}
+                      pub_date={result.pub_date}
+                      url={result.web_url} />
+
                     <Buttons className="btn viewArticle" value={result.web_url} onClick={this.viewArticle}>
                       View Article
                                             </ Buttons>
@@ -129,35 +132,37 @@ class App extends Component {
                       Save Article
                                             </ Buttons>
 
-            
-                </Items>
-              ))}
-            </List>
-          ) : (<Messages message="Search for an Article Above and View Results Here" />)}
 
-        </Panel>
-        <Panel heading="Saved Articles">
-          <div style={{ float: "left", clear: "both" }}
-            ref={(el) => { this.savedTop = el; }}>
-          </div>
-          {this.state.savedArticles.length ? (
-            <List>
-              {this.state.savedArticles.slice(0).reverse().map(article => ( //For each article in the savedArticles array, create a list item (reverse order) with a div w/ article info, and a delete button with article ID
-                <Items key={article._id}>
-                 <ListContainer headline={article.headline}  pub_date={article.pub_date}  url={article.url} />
+                  </Items>
+                ))}
+              </List>
+            ) : (<Messages message="Search for an Article Above and View Results Here" />)}
 
-                  <Buttons className="btn viewArticle" value={article.web_url} onClick={this.viewArticle}>
-                    View Article
+          </Panel>
+          <Panel heading="Saved Articles">
+            <div style={{ float: "left", clear: "both" }}
+              ref={(el) => { this.savedTop = el; }}>
+            </div>
+            {this.state.savedArticles.length ? (
+              <List>
+                {this.state.savedArticles.slice(0).reverse().map(article => ( //For each article in the savedArticles array, create a list item (reverse order) with a div w/ article info, and a delete button with article ID
+                  <Items key={article._id}>
+                    <ListContainer headline={article.headline} pub_date={article.pub_date} url={article.url} />
+
+                    <Buttons className="btn viewArticle" value={article.web_url} onClick={this.viewArticle}>
+                      View Article
                     </ Buttons>
-                  <Buttons id={article._id} className="btn deleteBtn" onClick={this.handleArticleDelete}>
-                    Delete Article
+                    <Buttons id={article._id} className="btn deleteBtn" onClick={this.handleArticleDelete}>
+                      Delete Article
                    </ Buttons>
-                </Items>
-              ))}
-            </List>
+                  </Items>
+                ))}
+              </List>
             ) : <Messages message="Save an article from the search results above and view the list of saved articles here." />}
-        </Panel>
-        
+          </Panel>
+
+        </Body>
+
       </Wrapper>
     );
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import "./Search.css";
 
 const Search = props =>
   <div>
@@ -8,7 +9,7 @@ const Search = props =>
         <input
           value={props.search}
           onChange={props.handleInputChange}
-          name="search"
+          name="topic"
           type="text"
           className="form-control"
           placeholder="Type in a subject to search"
@@ -20,7 +21,7 @@ const Search = props =>
         <input
           value={props.startDate}
           onChange={props.handleInputChange}
-          name="startDate"
+          name="startYear"
           type="number" 
           className="form-control"
           placeholder="Type in a start year to begin - only numbers are allowed"
@@ -32,7 +33,7 @@ const Search = props =>
         <input
           value={props.endDate}
           onChange={props.handleInputChange}
-          name="endDate"
+          name="endYear"
           type="number" 
           className="form-control"
           placeholder="Type in an end year to begin - only numbers are allowed"
@@ -43,7 +44,7 @@ const Search = props =>
       <button
         type="submit"
         onClick={props.handleFormSubmit}
-        className="btn btn-success"
+        className="btn btn-success submitBtn"
       >Search
 	      </button>
     </form>

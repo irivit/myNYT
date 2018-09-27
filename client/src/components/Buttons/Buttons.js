@@ -1,7 +1,7 @@
 import React from "react";
 import "./Buttons.css";
 
-const ButtonGroup = (props) => {
+const Buttons = (props) => {
     return (
         <div className="button-group-div" role="group">
             <button type="button" {...props}>
@@ -11,4 +11,4 @@ const ButtonGroup = (props) => {
     )
 };
 
-export default ButtonGroup;
+export default Buttons;

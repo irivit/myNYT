@@ -14,8 +14,11 @@ if (process.env.NODE_ENV === "production") {
 }
 
 //  API routes
-const routes = require("./client/src/routes/")
+const routes = require("./routes")
 app.use(routes);
+
+// app.use(app.router);
+// routes.initialize(app);
 
 //Determine if using local DB or heroku mLabs db
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/nytreact"

@@ -1,0 +1,14 @@
+.panel-default>.panel-heading{
+    background-color: lightgray;
+    color: #003152;
+    margin: 0%;
+}
+
+.panel-default {
+    border: 2px solid #003152;
+}
+
+.panel-body{
+    background-color: white;
+    margin: 0%;
+}

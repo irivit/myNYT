@@ -15,10 +15,7 @@
     background-color: lightgray;
     border: solid 2px #003152;
     color:#003152;
-    margin-top:5px;
-
-   
-   
+    margin-top:5px;   
 }
 .saveBtn:hover{
     background-color:darkgray;

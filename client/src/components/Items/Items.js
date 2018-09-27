@@ -1,7 +1,7 @@
 import React from "react";
 import "./Items.css";
 
-const ListItem = props => (
+const Items = props => (
   <li className="list-group-item">
   <div className="listParentDiv">
     {props.children}
@@ -9,4 +9,4 @@ const ListItem = props => (
   </li>
 );
 
-export default ListItem;
+export default Items;
