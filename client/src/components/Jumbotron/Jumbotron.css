@@ -1,13 +1,14 @@
 
-.jumbotron {
-    margin-top:15px;
+ .jumbotron {
+    font-family: 'New Rocker', cursive;
     margin-bottom: 20px;
     text-align: center;
-    background-color: lightgray;
-    color: #003152;
+    background-color: #003152;
+    color: #fff;
     border:solid 3px #fff;
 };
 
 .jumbotron > h3 {
     color:white!important;
-}
+    
+} 

@@ -44,7 +44,7 @@ const Search = props =>
       <button
         type="submit"
         onClick={props.handleFormSubmit}
-        className="btn btn-success submitBtn"
+        className="btn btn-primary btn-lg btn-block submitBtn"
       >Search
 	      </button>
     </form>

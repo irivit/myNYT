@@ -5,10 +5,10 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const mongoose = require("mongoose");
 
-// Define middleware here
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// Serve up static assets (usually on heroku)
+
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
@@ -17,26 +17,22 @@ if (process.env.NODE_ENV === "production") {
 const routes = require("./routes")
 app.use(routes);
 
-// app.use(app.router);
-// routes.initialize(app);
-
-//Determine if using local DB or heroku mLabs db
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/nytreact"
-
-// Set up promises with mongoose
-mongoose.Promise = global.Promise;
 
 
-//Connect to database
-mongoose.connect(
-  MONGODB_URI
-);
-// Send every other request to the React app
-// Define any API routes before this runs
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
 
-app.listen(PORT, () => {
-  console.log(`🌎 ==> Server now on port ${PORT}!`);
-});
+if (process.env.NODE_ENV === 'production') {
+
+  app.use(express.static(path.join(__dirname, 'client/build')));
+
+  app.get('*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+}
+
+// MongoDB Mongoose connection
+const mongoDBURI = process.env.MONGODB_URI || 'mongodb://localhost/nytreact';
+mongoose.connect(mongoDBURI, { useNewUrlParser: true })
+  .then(() => {
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}, Mongoose connected to MongoDB`));
+  })
+.catch(err => console.log(err));
